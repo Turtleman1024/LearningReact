@@ -4,11 +4,9 @@ import React, { Component } from 'react';
 /*This is the main App Component*/
 class Todo extends Component {
   render() {
-    return (
-      <div>
-        <h1>Todo</h1>
-      </div>
-    );
+    return this.props.todos.map((todos) => (
+        <h3>{ todos.title}</h3>
+    ));
   }
 }
 

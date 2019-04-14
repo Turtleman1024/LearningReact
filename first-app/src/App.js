@@ -27,7 +27,8 @@ class App extends Component {
     return (
       <div className="App">
       {/*Embedding the Todo component*/}
-        <Todo/>>
+      {/*Passing todos as a prop to the todo component*/}
+        <Todo todos={this.state.todos}/>>
       </div>
     );
   }
