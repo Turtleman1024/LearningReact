@@ -10,7 +10,7 @@ class App extends Component {
       {
         id: 1,
         title: 'Learn React',
-        completed: true
+        completed: false
       },
       {
         id: 2,
@@ -24,12 +24,22 @@ class App extends Component {
       }
     ]
   }
+
+  markComplete = (id) => {
+    this.setState( {todos: this.state.todos.map(todo => {
+      if(todo.id === id){
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    })});
+  }
+
   render() {
     return (
       <div className="App">
       {/*Embedding the Todo component*/}
       {/*Passing todos as a prop to the todo component*/}
-        <Todo todos={this.state.todos}/>>
+        <Todo todos={this.state.todos} markComplete={this.markComplete}/>>
       </div>
     );
   }
