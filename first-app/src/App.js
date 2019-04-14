@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Todo from './components/Todos';
 import './App.css';
 
+/*npm run start */
 /*This is the main App Component*/
 class App extends Component {
   state = {
