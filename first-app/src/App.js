@@ -5,7 +5,7 @@ import './App.css';
 /*npm run start */
 /*This is the main App Component*/
 /*https://www.youtube.com/watch?v=sBws8MSXN7A&t=810s
-  stopped at 49.55
+  
 */
 class App extends Component {
   state = {
@@ -28,7 +28,8 @@ class App extends Component {
     ]
   }
 
-  markComplete = (id) => {
+  // This toggle complete
+  toggleComplete = (id) => {
     this.setState( {todos: this.state.todos.map(todo => {
       if(todo.id === id){
         todo.completed = !todo.completed;
@@ -42,7 +43,7 @@ class App extends Component {
       <div className="App">
       {/*Embedding the Todo component*/}
       {/*Passing todos as a prop to the todo component*/}
-        <Todo todos={this.state.todos} markComplete={this.markComplete}/>
+        <Todo todos={this.state.todos} toggleComplete={this.toggleComplete}/>
       </div>
     );
   }

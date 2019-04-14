@@ -12,7 +12,7 @@ export class TodoItem extends Component {
     }
     //Will have to drill through the components since not using Redux
     //Cannot use this here have to go up one leave to Todo.js
-    /* markComplete = (e) => {
+    /* toggleComplete = (e) => {
 
     } */
   render() {
@@ -20,7 +20,7 @@ export class TodoItem extends Component {
     return (
       <div style={this.getStyle()}>
         <p>
-            <input type='checkbox' onChange={this.props.markComplete.bind(this, id)}/> {' '}
+            <input type='checkbox' onChange={this.props.toggleComplete.bind(this, id)}/> {' '}
             { title }
         </p>
       </div>
