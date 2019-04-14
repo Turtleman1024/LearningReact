@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Todo from './components/Todos';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import './App.css';
 
 /*npm run start */
@@ -50,7 +52,9 @@ class App extends Component {
       <div className="App">
       {/*Embedding the Todo component*/}
       {/*Passing todos as a prop to the todo component*/}
+        <Header/>
         <Todo todos={this.state.todos} toggleComplete={this.toggleComplete} delTodo={this.delTodo}/>
+        <Footer/>
       </div>
     );
   }
