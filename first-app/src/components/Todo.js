@@ -6,7 +6,8 @@ class Todo extends Component {
   render() {
     return this.props.todos.map((todos) => (
         /*Passing the current todos array item to TodoItem props*/
-        <TodoItem todos={todos}/>
+        /*Map needs to have a unquie key*/
+        <TodoItem key={todos.id} todos={todos}/>
     ));
   }
 }
