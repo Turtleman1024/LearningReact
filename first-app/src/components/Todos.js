@@ -13,7 +13,7 @@ class Todos extends Component {
     return this.props.todos.map((todo) => (
         /*Passing the current todos array item to TodoItem props*/
         /*Map needs to have a unquie key*/
-        <TodoItem key={todo.id} todo={todo} toggleComplete={this.props.toggleComplete}/>
+        <TodoItem key={todo.id} todo={todo} toggleComplete={this.props.toggleComplete} delTodo={this.props.delTodo} />
     ));
   }
 }
