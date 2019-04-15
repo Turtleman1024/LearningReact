@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Todo from './components/Todos';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import AddTodo from './components/AddTodo';
+import About from './components/Pages/About';
 import uuid from 'uuid';
 import './App.css';
 
 /*npm run start */
 /*This is the main App Component*/
 /*https://www.youtube.com/watch?v=sBws8MSXN7A&t=810s
-  stopped 1:00:00
 */
 class App extends Component {
   state = {
@@ -64,16 +65,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-            {/*Embedding the Todo component*/}
-            {/*Passing todos as a prop to the todo component*/}
-            <Header/>
-            <AddTodo addTodo={this.addTodo}/>
-            <Todo todos={this.state.todos} toggleComplete={this.toggleComplete} delTodo={this.delTodo}/>
-            <Footer/>
-          </div>
-      </div>
+      <Router>
+        <div className="App">
+          <div className="container">
+              {/*Embedding the Todo component*/}
+              {/*Passing todos as a prop to the todo component*/}
+              <Header/>
+              <Route exact path="/" render={props => (
+                <React.Fragment>
+                  <AddTodo addTodo={this.addTodo}/>
+                  <Todo todos={this.state.todos} toggleComplete={this.toggleComplete} delTodo={this.delTodo}/>           
+                </React.Fragment>
+              )} />
+              <Route path="/about" component={About} />
+              <Footer/>
+            </div>
+        </div>
+      </Router>
     );
   }
 }
