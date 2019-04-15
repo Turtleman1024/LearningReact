@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class AddTodo extends Component {
     //This is a example of a component state
@@ -39,6 +40,13 @@ export class AddTodo extends Component {
         </form>
     )
   }
+}
+
+//PropTypes
+AddTodo.propType = {
+    addTodo: PropTypes.func.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    delTodo: PropTypes.func.isRequired
 }
 
 export default AddTodo;

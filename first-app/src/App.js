@@ -5,32 +5,27 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import AddTodo from './components/AddTodo';
 import About from './components/Pages/About';
-import uuid from 'uuid';
+//import uuid from 'uuid';
 import './App.css';
+import axios from 'axios';
 
 /*npm run start */
 /*This is the main App Component*/
 /*https://www.youtube.com/watch?v=sBws8MSXN7A&t=810s
+
+  Website that allows for a back in supporters.
+  Must run npm install axios
+  https://jsonplaceholder.typicode.com/
 */
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: 'Learn React',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Learn Redux',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Learn Sages',
-        completed: false
-      }
-    ]
+    todos: []
+  }
+
+  componentDidMount(){
+    //Limit the number of todos that we get to 10
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    .then(res => this.setState({ todos: res.data}))
   }
 
   // This toggle complete
@@ -45,22 +40,20 @@ class App extends Component {
 
   //Delete an item Todos
   delTodo = (id) => {
-    this.setState({
-       todos: [...this.state.todos.filter(todo => todo.id !== id)]
-      });
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]
+     }));
   }
 
   //Add Todo
   addTodo = (title) => {
-    const newTodo = {
-      id: uuid.v4(),
-      //Could do just 
-      //title,
+    //Mimics a post
+    axios.post('https://jsonplaceholder.typicode.com/todos', {
       title: title,
       completed: false
-    }
+    }).then(res => this.setState({ todos: [...this.state.todos, res.data]}));
     //Now add to our state
-    this.setState({ todos: [...this.state.todos, newTodo]});
+    ;
   }
 
   render() {
